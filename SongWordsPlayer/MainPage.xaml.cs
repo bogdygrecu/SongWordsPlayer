@@ -29,7 +29,7 @@ namespace SongWordsPlayer
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-
+            MyMusicListBoxItem.IsSelected = true;
         }
 
         private void HamburgerMenuButton_Click(object sender, RoutedEventArgs e)
@@ -39,7 +39,37 @@ namespace SongWordsPlayer
 
         private void MenuItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if(MyMusicListBoxItem.IsSelected)
+            {
+                ContentFrame.Navigate(typeof(Frames.MyMusicFrame));
+                TitleTextBlock.Text = "My Music";
+            }
+            else if(NowPlayingListBoxItem.IsSelected)
+            {
+                ContentFrame.Navigate(typeof(Frames.NowPlayingFrame));
+                TitleTextBlock.Text = "Now Playing";
+            }
+            else if(PlaylistsListBoxItem.IsSelected)
+            {
+                ContentFrame.Navigate(typeof(Frames.PlaylistsFrame));
+                TitleTextBlock.Text = "Playlists";
+            }
+            else if(AutoOffListBoxItem.IsSelected)
+            {
+                ContentFrame.Navigate(typeof(Frames.AutoOffFrame));
+                TitleTextBlock.Text = "Auto Off";
+            }
+            else if(SettingsListBoxItem.IsSelected)
+            {
+                ContentFrame.Navigate(typeof(Frames.SettingsFrame));
+                TitleTextBlock.Text = "Settings";
+            }
+            else
+            {
+                //do nothing
+            }
 
+            MenuSplitView.IsPaneOpen = false;
         }
 
         private void AutoSuggest_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)

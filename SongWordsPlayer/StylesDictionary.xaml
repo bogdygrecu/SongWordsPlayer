@@ -40,6 +40,12 @@
         <Setter Property="Margin" Value="10,0,0,0" />
     </Style>
 
+    <Style TargetType="TextBlock" x:Key="TitleTextBlockStyle">
+        <Setter Property="FontSize" Value="32" />
+        <Setter Property="Foreground" Value="{ThemeResource SystemAccentColor}" />
+        <Setter Property="Margin" Value="10,0,0,0" />
+    </Style>
+
     <Style TargetType="AutoSuggestBox" x:Key="AutoSuggestBoxStyle">
         <Setter Property="MinWidth" Value="150" />
         <Setter Property="MaxWidth" Value="300" />

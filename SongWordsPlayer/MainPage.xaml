@@ -32,7 +32,8 @@
                     Click="HamburgerMenuButton_Click" />
             
             <TextBlock Name="TitleTextBlock"
-                       RelativePanel.RightOf="HamburgerMenuButton" />
+                       RelativePanel.RightOf="HamburgerMenuButton" 
+                       Style="{StaticResource TitleTextBlockStyle}"/>
 
             <AutoSuggestBox Name="AutoSuggest"
                             RelativePanel.AlignRightWithPanel="True" 
@@ -44,35 +45,35 @@
         <SplitView Grid.Row="1" Name="MenuSplitView" Style="{StaticResource SplitViewStyle}">
             <SplitView.Pane>
                 <ListBox Name="MenuItems" SelectionMode="Single" SelectionChanged="MenuItems_SelectionChanged">
-                    <ListBoxItem Name="FirstListBoxItem">
+                    <ListBoxItem Name="MyMusicListBoxItem">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="&#xE8D6;" Style="{StaticResource MenuItemIconStyle}" />
                             <TextBlock Text="My Music" Style="{StaticResource MenuItemTextStyle}" />
                         </StackPanel>
                     </ListBoxItem>
 
-                    <ListBoxItem Name="SecondListBoxItem">
+                    <ListBoxItem Name="NowPlayingListBoxItem">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="&#xE102;" Style="{StaticResource MenuItemIconStyle}" />
                             <TextBlock Text="Now Playing" Style="{StaticResource MenuItemTextStyle}" />
                         </StackPanel>
                     </ListBoxItem>
 
-                    <ListBoxItem Name="ThirdListBoxItem">
+                    <ListBoxItem Name="PlaylistsListBoxItem">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="&#xE90B;" Style="{StaticResource MenuItemIconStyle}" />
                             <TextBlock Text="Playlists" Style="{StaticResource MenuItemTextStyle}" />
                         </StackPanel>
                     </ListBoxItem>
 
-                    <ListBoxItem Name="ForthListBoxItem">
+                    <ListBoxItem Name="AutoOffListBoxItem">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="&#xE916;" Style="{StaticResource MenuItemIconStyle}" />
                             <TextBlock Text="Auto Off" Style="{StaticResource MenuItemTextStyle}" /> 
                         </StackPanel>
                     </ListBoxItem>
 
-                    <ListBoxItem Name="FifthListBoxItem">
+                    <ListBoxItem Name="SettingsListBoxItem">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="&#xE115;" Style="{StaticResource MenuItemIconStyle}" />
                             <TextBlock Text="Settings" Style="{StaticResource MenuItemTextStyle}" />
@@ -82,15 +83,7 @@
             </SplitView.Pane>
 
             <SplitView.Content>
-                <Grid>
-                    <Grid.ColumnDefinitions> <!--POSSIBLE PROBLEM: how to switch the columns to rows in case of vertical position of the screen?-->
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <Frame Grid.Column="0" Name="ContentFrame" />   <!--App content (songs, artists, albums, etc...-->
-                    <Frame Grid.Column="1" Name="LyricsFrame" />    <!--Lyrics retrieved from the internet-->
-                </Grid>
+                <Frame Name="ContentFrame" />
             </SplitView.Content>
         </SplitView>
         
