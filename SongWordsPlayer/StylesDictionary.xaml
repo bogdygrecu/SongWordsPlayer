@@ -1,0 +1,18 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SongWordsPlayer">
+
+    <Style TargetType="Grid" x:Key="SystemThemedApplicationBackground">
+        <Setter Property="Background" Value="{ThemeResource ApplicationPageBackgroundThemeBrush}" /> <!-- System theme -->
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="DefaultTextStyle">
+        <Setter Property="Foreground" Value="{ThemeResource SystemBaseHighColor}" />
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="AccentTextStyle">
+        <Setter Property="Foreground" Value="{ThemeResource SystemAccentColor}" />
+    </Style>
+    
+</ResourceDictionary>
