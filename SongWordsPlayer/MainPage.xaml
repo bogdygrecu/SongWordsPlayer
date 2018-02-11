@@ -17,12 +17,82 @@
     </Page.Resources>
 
     <Grid Style="{StaticResource SystemThemedApplicationBackground}"> 
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" /> <!--Menu and searchbox-->
             <RowDefinition Height="*" />    <!--All the content-->
             <RowDefinition Height="Auto" /> <!--Progress and control-->
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Style="{StaticResource DefaultTextStyle}" > Normal text</TextBlock>
-        <TextBlock Grid.Row="1" Style="{StaticResource AccentTextStyle}" > Accent text</TextBlock>
+
+        <RelativePanel Grid.Row="0">
+            <Button Name="HamburgerMenuButton"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    Content="&#xE700;"
+                    Style="{StaticResource HamburgerButtonStyle}" 
+                    Click="HamburgerMenuButton_Click" />
+            
+            <TextBlock Name="TitleTextBlock"
+                       RelativePanel.RightOf="HamburgerMenuButton" />
+
+            <AutoSuggestBox Name="AutoSuggest"
+                            RelativePanel.AlignRightWithPanel="True" 
+                            Style="{StaticResource AutoSuggestBoxStyle}" 
+                            TextChanged="AutoSuggest_TextChanged"
+                            QuerySubmitted="AutoSuggest_QuerySubmitted" />
+        </RelativePanel>
+
+        <SplitView Grid.Row="1" Name="MenuSplitView" Style="{StaticResource SplitViewStyle}">
+            <SplitView.Pane>
+                <ListBox Name="MenuItems" SelectionMode="Single" SelectionChanged="MenuItems_SelectionChanged">
+                    <ListBoxItem Name="FirstListBoxItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE8D6;" Style="{StaticResource MenuItemIconStyle}" />
+                            <TextBlock Text="My Music" Style="{StaticResource MenuItemTextStyle}" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Name="SecondListBoxItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE102;" Style="{StaticResource MenuItemIconStyle}" />
+                            <TextBlock Text="Now Playing" Style="{StaticResource MenuItemTextStyle}" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Name="ThirdListBoxItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE90B;" Style="{StaticResource MenuItemIconStyle}" />
+                            <TextBlock Text="Playlists" Style="{StaticResource MenuItemTextStyle}" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Name="ForthListBoxItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE916;" Style="{StaticResource MenuItemIconStyle}" />
+                            <TextBlock Text="Auto Off" Style="{StaticResource MenuItemTextStyle}" /> 
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Name="FifthListBoxItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE115;" Style="{StaticResource MenuItemIconStyle}" />
+                            <TextBlock Text="Settings" Style="{StaticResource MenuItemTextStyle}" />
+                        </StackPanel>
+                    </ListBoxItem>
+                </ListBox>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+                <Grid>
+                    <Grid.ColumnDefinitions> <!--POSSIBLE PROBLEM: how to switch the columns to rows in case of vertical position of the screen?-->
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Frame Grid.Column="0" Name="ContentFrame" />   <!--App content (songs, artists, albums, etc...-->
+                    <Frame Grid.Column="1" Name="LyricsFrame" />    <!--Lyrics retrieved from the internet-->
+                </Grid>
+            </SplitView.Content>
+        </SplitView>
+        
     </Grid>
 </Page>

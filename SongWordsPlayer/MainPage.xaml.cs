@@ -31,5 +31,25 @@ namespace SongWordsPlayer
         {
 
         }
+
+        private void HamburgerMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            MenuSplitView.IsPaneOpen = !MenuSplitView.IsPaneOpen;
+        }
+
+        private void MenuItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void AutoSuggest_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+
+        }
+
+        private void AutoSuggest_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+
+        }
     }
 }
