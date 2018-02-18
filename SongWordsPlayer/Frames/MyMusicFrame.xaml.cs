@@ -31,10 +31,14 @@ namespace SongWordsPlayer.Frames
         public MyMusicFrame()
         {
             this.InitializeComponent();
+            myLocations = new ObservableCollection<StorageFolder>();
+            myMusic = new ObservableCollection<StorageFile>();
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            myLocations.Add(KnownFolders.MusicLibrary);
+            await UpdateMusicCollectionAsync();
 
         }
 
@@ -68,6 +72,11 @@ namespace SongWordsPlayer.Frames
             {
                 await SearchForMusicFilesInLocationAsync(location);
             }
+        }
+
+        private void MySongsListview_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
         }
     }
 }
