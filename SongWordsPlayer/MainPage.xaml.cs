@@ -5,6 +5,8 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Playback;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,9 +24,21 @@ namespace SongWordsPlayer
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        static private MediaPlayer mediaPlayer;
+
+        public static MainPage Instance { get; private set; }
+        
+        void Awake()
+        {
+            Instance = this;
+        }
+
         public MainPage()
         {
             this.InitializeComponent();
+            //mediaPlayer = new MediaPlayer();  //error, check why
+            mediaPlayer = BackgroundMediaPlayer.Current;
+            Awake();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -70,6 +84,15 @@ namespace SongWordsPlayer
             }
 
             MenuSplitView.IsPaneOpen = false;
+        }
+
+        public void GetSelectedSong(object file)
+        {
+            var value = (StorageFile)file;
+            mediaPlayer.SetFileSource(value);
+            mediaPlayer.Play();
+            NowPlayingListBoxItem.IsSelected = true;
+            
         }
 
         private void AutoSuggest_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)

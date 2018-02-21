@@ -39,7 +39,6 @@ namespace SongWordsPlayer.Frames
         {
             myLocations.Add(KnownFolders.MusicLibrary);
             await UpdateMusicCollectionAsync();
-
         }
 
         private bool IsTargetedFileType(StorageFile file)
@@ -76,7 +75,7 @@ namespace SongWordsPlayer.Frames
 
         private void MySongsListview_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            MainPage.Instance.GetSelectedSong(e.ClickedItem);
         }
     }
 }
